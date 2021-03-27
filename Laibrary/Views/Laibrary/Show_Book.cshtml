@@ -1,0 +1,50 @@
+﻿@model Laibrary.Models.Book
+<div class="row">
+    <div class="col-5 mr-1" style="width:200px;height:350px;">
+        <img style="width:100%;height:100%;" src="~/Content/Image/@Model.Image" />
+    </div>
+    <div class="col-6">
+        <h3 class="text-center">
+            @Model.Name
+        </h3>
+        <span class="pr-1">
+            @Model.Description
+        </span>
+    <div>
+
+        @Ajax.ActionLink("Borrow", "Borrow_Book", new { id = Model.Isbn },
+                 new AjaxOptions()
+                 {
+                     UpdateTargetId = "d1",
+                     InsertionMode = InsertionMode.Replace,
+                     OnComplete = "show"
+                 }, new { @class = "btn btn-primary" }
+                 )
+        @if (Session["Count"] != null)
+        {
+            <span class="text-danger bg-white">@Session["Count"]</span>
+            Session["Count"] = null;
+        }
+
+        @Ajax.ActionLink("Retrieval", "Retrieval_Book", new { id = Model.Isbn },
+              new AjaxOptions()
+              {
+                  UpdateTargetId = "d1",
+                  InsertionMode = InsertionMode.Replace,
+                  OnComplete = "show"
+              }, new { @class = "btn btn-primary" }
+              )
+        @if (Session["CurrentCount"] != null)
+        {
+            <span class="text-danger bg-white">@Session["CurrentCount"]</span>
+            Session["CurrentCount"] = null;
+
+        }
+        @*}*@
+    </div>
+    </div>
+</div>
+
+
+
+

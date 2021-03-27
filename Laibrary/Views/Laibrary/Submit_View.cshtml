@@ -1,0 +1,12 @@
+﻿
+@if (Session["error"] == null)
+{
+<script>window.location.reload();</script>
+}
+else
+{
+    <span class="text-danger">@Session["error"]</span>
+    Session["error"] = null;
+
+}
+

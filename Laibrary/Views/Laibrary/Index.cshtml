@@ -1,0 +1,45 @@
+﻿@model List<Laibrary.Models.Book>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/Content/Files/index.css" />
+    <link rel="stylesheet" href="~/Content/Files/bootstrap.css" />
+</head>
+<body>
+    <div class="container mt-2">
+        <div class="row text-center">
+            @foreach (var item in Model)
+            {
+                <div class="col m-auto mt-1 border-secondary" style="width:150px;height:200px;">
+                    <img style="width:100%;height:100%;" src="~/Content/Image/@item.Image" />
+                    @Ajax.ActionLink("Click to show", "Show_Book", new { id=item.Isbn},
+                           new AjaxOptions()
+                           {
+                               UpdateTargetId = "d1",
+                               InsertionMode = InsertionMode.Replace,
+                               OnComplete = "show"
+                           },new {@class="text-center"}
+                           )
+                </div>
+            }
+
+        </div>
+    </div>
+    <br /><br />
+
+    <div class="container-fluid" id="d1">
+
+    </div>
+ 
+    <script src="~/Content/Files/jquery.js"></script>
+    <script src="~/Content/Files/bootstrap.bundle.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+</body>
+</html>

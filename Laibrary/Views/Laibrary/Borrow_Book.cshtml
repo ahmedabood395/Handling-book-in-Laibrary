@@ -1,0 +1,30 @@
+﻿@model Laibrary.Models.User
+<div class="row text-center">
+    <form method="post" action="/Laibrary/Borrow_Book">
+        <table class="table table-responsive">
+            <tr>
+                <td>
+                    @Html.DisplayName("National ID")
+                </td>
+                <td>
+                    @*@Html.EditorFor(n => n.Id)*@
+                    <input type="number" name="Id" />
+                </td>
+            </tr>
+            <tr>
+                <td> @Html.DisplayNameFor(n => n.FullName)</td>
+                <td>@Html.EditorFor(n => n.FullName)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(n => n.E_Mail)</td>
+                <td>@Html.EditorFor(n => n.E_Mail)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(n => n.Address)</td>
+                <td>@Html.EditorFor(n => n.Address)</td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </form>
+
+</div>
